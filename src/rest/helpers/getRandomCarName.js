@@ -1,0 +1,48 @@
+const carNames = [
+    'Maruti Suzuki Swift',
+    'Maruti Suzuki Baleno',
+    'Maruti Suzuki Dzire',
+    'Maruti Suzuki Alto',
+    'Maruti Suzuki Wagon R',
+    'Hyundai i20',
+    'Hyundai Creta',
+    'Hyundai Venue',
+    'Hyundai Grand i10',
+    'Hyundai Verna',
+    'Tata Harrier',
+    'Tata Nexon',
+    'Tata Altroz',
+    'Tata Tiago',
+    'Tata Safari',
+    'Mahindra Scorpio',
+    'Mahindra XUV500',
+    'Mahindra Thar',
+    'Mahindra Bolero',
+    'Mahindra XUV300',
+    'Honda City',
+    'Honda Amaze',
+    'Honda Jazz',
+    'Honda WR-V',
+    'Honda Civic',
+    'Toyota Innova Crysta',
+    'Toyota Fortuner',
+    'Toyota Glanza',
+    'Toyota Yaris',
+    'Kia Seltos',
+    'Kia Sonet',
+    'Kia Carnival',
+    'Renault Kwid',
+    'Renault Triber',
+    'Ford EcoSport',
+    'Ford Figo',
+    'Ford Endeavour',
+    'Volkswagen Polo',
+    'Volkswagen Vento',
+    'Volkswagen Taigun',
+]
+
+const getRandomCarName = () => {
+    return carNames[Math.floor(Math.random() * carNames.length)]
+}
+
+export default getRandomCarName
