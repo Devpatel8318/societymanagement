@@ -313,3 +313,70 @@ export const q34 = async () => {
 
     return { no: 34, question, numberOfBikes: numberOfBikes[0]?.numberOfBikes }
 }
+
+//new
+
+export const q35 = async () => {
+    const question = 'How many Marriages happened in Society-Hall'
+
+    const numberOfMarriagesInHall =
+        await questionQueries.numberOfMarriagesInHall()
+
+    return {
+        no: 35,
+        question,
+        numberOfMarriagesInHall:
+            numberOfMarriagesInHall[0]?.numberOfMarriagesInHall,
+    }
+}
+
+export const q36 = async () => {
+    const question = 'How many Marriages of Patel happened in Society-Hall'
+
+    const numberOfPeople =
+        await questionQueries.numberOfPatelWhoseMarriageInHall()
+
+    return {
+        no: 36,
+        question,
+        numberOfPeople: numberOfPeople[0]?.numberOfPeople,
+    }
+}
+
+export const q37 = async () => {
+    const question =
+        'How many Marriages happened in Hall from House which Own White Car'
+
+    const numberOfPople =
+        await questionQueries.numberOfPeopleWhoseMarriageHappenedInHallFromHouseHavingWhiteCar()
+
+    return {
+        no: 37,
+        question,
+        numberOfPople: numberOfPople[0]?.numberOfPople,
+    }
+}
+
+export const q38 = async () => {
+    const question = 'Which Houses have atleast one Car'
+
+    const housesWithCars = await questionQueries.housesWithAtleastOneCar()
+
+    return {
+        no: 38,
+        question,
+        housesWithCars: housesWithCars[0].houses,
+    }
+}
+
+export const q39 = async () => {
+    const question = 'Which Houses have atleast one Bike'
+
+    const housesWithBike = await questionQueries.housesWithAtleastOneBike()
+
+    return {
+        no: 38,
+        question,
+        housesWithBike: housesWithBike[0].houses,
+    }
+}

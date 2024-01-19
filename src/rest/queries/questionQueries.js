@@ -233,3 +233,133 @@ export const numberOfCarsOwnedByBHK = async (bhk) => {
         ])
         .toArray()
 }
+
+export const numberOfMarriagesInHall = async () => {
+    return await db
+        .collection('houseMaster')
+        .aggregate([
+            {
+                $group: {
+                    _id: null,
+                    numberOfMarriagesInHall: {
+                        $sum: '$marriagesInHall',
+                    },
+                },
+            },
+        ])
+        .toArray()
+}
+
+export const numberOfPatelWhoseMarriageInHall = async () => {
+    return await db
+        .collection('houseMaster')
+        .aggregate([
+            {
+                $match: {
+                    caste: 'Patel',
+                },
+            },
+            {
+                $group: {
+                    _id: null,
+                    numberOfPeople: {
+                        $sum: '$marriagesInHall',
+                    },
+                },
+            },
+        ])
+        .toArray()
+}
+
+export const numberOfPeopleWhoseMarriageHappenedInHallFromHouseHavingWhiteCar =
+    async () => {
+        return await db
+            .collection('carMaster')
+            .aggregate([
+                {
+                    $match: {
+                        carColor: 'White',
+                    },
+                },
+                {
+                    $lookup: {
+                        from: 'houseMaster',
+                        localField: 'carOwner',
+                        foreignField: 'houseNo',
+                        as: 'ownerDetail',
+                    },
+                },
+                {
+                    $unwind: {
+                        path: '$ownerDetail',
+                    },
+                },
+                {
+                    $group: {
+                        _id: null,
+                        numberOfPople: {
+                            $sum: '$ownerDetail.marriagesInHall',
+                        },
+                    },
+                },
+            ])
+            .toArray()
+    }
+
+export const housesWithAtleastOneCar = async () => {
+    return await db
+        .collection('carMaster')
+        .aggregate([
+            {
+                $lookup: {
+                    as: 'ownerDetail',
+                    from: 'houseMaster',
+                    foreignField: 'houseNo',
+                    localField: 'carOwner',
+                },
+            },
+            {
+                $unwind: {
+                    path: '$ownerDetail',
+                },
+            },
+            {
+                $group: {
+                    _id: null,
+                    houses: {
+                        $addToSet: '$ownerDetail.houseNo',
+                    },
+                },
+            },
+        ])
+        .toArray()
+}
+
+export const housesWithAtleastOneBike = async () => {
+    return await db
+        .collection('bikeMaster')
+        .aggregate([
+            {
+                $lookup: {
+                    as: 'ownerDetail',
+                    from: 'houseMaster',
+                    foreignField: 'houseNo',
+                    localField: 'bikeOwner',
+                },
+            },
+            {
+                $unwind: {
+                    path: '$ownerDetail',
+                },
+            },
+            {
+                $group: {
+                    _id: null,
+                    houses: {
+                        $addToSet: '$ownerDetail.houseNo',
+                    },
+                },
+            },
+        ])
+        .toArray()
+}
