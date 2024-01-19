@@ -312,10 +312,10 @@ export const housesWithAtleastOneCar = async () => {
         .aggregate([
             {
                 $lookup: {
-                    as: 'ownerDetail',
                     from: 'houseMaster',
                     foreignField: 'houseNo',
                     localField: 'carOwner',
+                    as: 'ownerDetail',
                 },
             },
             {
@@ -341,10 +341,10 @@ export const housesWithAtleastOneBike = async () => {
         .aggregate([
             {
                 $lookup: {
-                    as: 'ownerDetail',
                     from: 'houseMaster',
                     foreignField: 'houseNo',
                     localField: 'bikeOwner',
+                    as: 'ownerDetail',
                 },
             },
             {
@@ -357,6 +357,42 @@ export const housesWithAtleastOneBike = async () => {
                     _id: null,
                     houses: {
                         $addToSet: '$ownerDetail.houseNo',
+                    },
+                },
+            },
+        ])
+        .toArray()
+}
+
+export const housesWithNoCar = async (listOfAllHouseNo) => {
+    return await db
+        .collection('carMaster')
+        .aggregate([
+            {
+                $lookup: {
+                    from: 'houseMaster',
+                    foreignField: 'houseNo',
+                    localField: 'carOwner',
+                    as: 'ownerDetail',
+                },
+            },
+            {
+                $unwind: {
+                    path: '$ownerDetail',
+                },
+            },
+            {
+                $group: {
+                    _id: null,
+                    housesWithCar: {
+                        $addToSet: '$ownerDetail.houseNo',
+                    },
+                },
+            },
+            {
+                $addFields: {
+                    housesWithoutCar: {
+                        $setDifference: [listOfAllHouseNo, '$housesWithCar'],
                     },
                 },
             },
