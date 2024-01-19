@@ -7,6 +7,7 @@ import { createServer } from 'http'
 import carRouter from './routers/carRouter.js'
 import bikeRouter from './routers/bikeRouter.js'
 import houseRouter from './routers/houseRouter.js'
+import answerRouter from './routers/answerRouter.js'
 
 config()
 const app = new Koa()
@@ -48,6 +49,7 @@ app.use(
 app.use(carRouter.routes())
 app.use(bikeRouter.routes())
 app.use(houseRouter.routes())
+app.use(answerRouter.routes())
 // app.use(subjectRouter.routes())
 // app.use(resultRouter.routes())
 
