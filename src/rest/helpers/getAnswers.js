@@ -7,6 +7,7 @@ export const q1 = async () => {
 
     return { no: 1, question, totalMales: answer[0]?.numberOfMales }
 }
+
 export const q2 = async () => {
     const question = 'Total Number of Females in Society'
 
@@ -14,6 +15,7 @@ export const q2 = async () => {
 
     return { no: 2, question, totalFemales: answer[0]?.numberOfFemales }
 }
+
 export const q3 = async () => {
     const question = 'How many Houses are there in Society'
 
@@ -21,6 +23,7 @@ export const q3 = async () => {
 
     return { no: 3, question, totalHouses: answer }
 }
+
 export const q4 = async () => {
     const question = 'How many Houses of Muslim are there in Society'
 
@@ -28,6 +31,7 @@ export const q4 = async () => {
 
     return { no: 4, question, numberOfHouses: answer }
 }
+
 export const q5 = async () => {
     const question = 'How many Houses of Jain are there in Society'
 
@@ -35,6 +39,7 @@ export const q5 = async () => {
 
     return { no: 5, question, numberOfHouses: answer }
 }
+
 export const q6 = async () => {
     const question = 'How many Houses of Patel are there in Society'
 
@@ -42,6 +47,7 @@ export const q6 = async () => {
 
     return { no: 6, question, numberOfHouses: answer }
 }
+
 export const q7 = async () => {
     const question = 'How many Houses of Rabari are there in Society'
 
@@ -49,6 +55,7 @@ export const q7 = async () => {
 
     return { no: 7, question, numberOfHouses: answer }
 }
+
 export const q8 = async () => {
     const question = 'How many Houses of Bharwad are there in Society'
 
@@ -56,6 +63,7 @@ export const q8 = async () => {
 
     return { no: 88, question, numberOfHouses: answer }
 }
+
 export const q9 = async () => {
     const question = 'How many Houses of Muslim are there in Line 1'
 
@@ -66,6 +74,7 @@ export const q9 = async () => {
 
     return { no: 98, question, numberOfHouses: answer }
 }
+
 export const q10 = async () => {
     const question = 'How many Houses of Jain are there in Line 1'
 
@@ -76,6 +85,7 @@ export const q10 = async () => {
 
     return { no: 10, question, numberOfHouses: answer }
 }
+
 export const q11 = async () => {
     const question = 'How many Houses of Patel are there in Line 1'
 
@@ -86,6 +96,7 @@ export const q11 = async () => {
 
     return { no: 11, question, numberOfHouses: answer }
 }
+
 export const q12 = async () => {
     const question = 'How many Houses of Rabari are there in Line 1'
 
@@ -96,6 +107,7 @@ export const q12 = async () => {
 
     return { no: 12, question, numberOfHouses: answer }
 }
+
 export const q13 = async () => {
     const question = 'How many Houses of Bharwad are there in Line 1'
 
@@ -106,6 +118,7 @@ export const q13 = async () => {
 
     return { no: 13, question, numberOfHouses: answer }
 }
+
 export const q14 = async () => {
     const question = 'How many Houses of Muslim are there in Line 2'
 
@@ -160,6 +173,7 @@ export const q18 = async () => {
 
     return { no: 18, question, numberOfHouses: answer }
 }
+
 export const q19 = async () => {
     const question = 'How many Bikes are there in Society'
 
@@ -167,6 +181,7 @@ export const q19 = async () => {
 
     return { no: 19, question, numberOfBikes: answer }
 }
+
 export const q20 = async () => {
     const question = 'How Many Bikes are Owned by Muslim'
 
@@ -174,6 +189,7 @@ export const q20 = async () => {
 
     return { no: 20, question, numberOfBikes: answer[0]?.numberOfBikes }
 }
+
 export const q21 = async () => {
     const question = 'How Many Bikes are Owned by Jain'
 
@@ -181,6 +197,7 @@ export const q21 = async () => {
 
     return { no: 21, question, numberOfBikes: answer[0]?.numberOfBikes }
 }
+
 export const q22 = async () => {
     const question = 'How Many Bikes are Owned by Patel'
 
@@ -234,6 +251,7 @@ export const q27 = async () => {
 
     return { no: 27, question, numberOfCars: answer[0]?.numberOfCars }
 }
+
 export const q28 = async () => {
     const question = 'How many Cars are there in Society'
 
@@ -241,6 +259,7 @@ export const q28 = async () => {
 
     return { no: 28, question, numberOfCars: answer }
 }
+
 export const q29 = async () => {
     const question = 'How many White Cars are there'
 
@@ -248,6 +267,7 @@ export const q29 = async () => {
 
     return { no: 29, question, numberOfCars: answer }
 }
+
 export const q30 = async () => {
     const question = 'How many Houses are there which owns Red bike'
 
@@ -285,6 +305,7 @@ export const q33 = async () => {
             numberOfBikes[0]?.numberOfBikes + numberOfCars[0]?.numberOfCars,
     }
 }
+
 export const q34 = async () => {
     const question = 'How many total Bikes are there in 1BHK Houses'
 

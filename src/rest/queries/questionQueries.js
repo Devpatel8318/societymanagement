@@ -36,14 +36,6 @@ export const numberOfHouses = async (filter = {}) => {
     return await db.collection('houseMaster').find(filter).count()
 }
 
-// export const numberOfHousesByCaste = async (caste) => {
-//     return await db.collection('houseMaster').find({ caste }).count()
-// }
-
-// export const numberOfHousesByCasteInLine = async (caste, lineNo) => {
-//     return await db.collection('houseMaster').find({ caste, lineNo }).count()
-// }
-
 export const numberOfBikes = async () => {
     return await db.collection('bikeMaster').count()
 }
