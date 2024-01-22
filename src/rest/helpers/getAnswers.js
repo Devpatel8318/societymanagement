@@ -239,7 +239,6 @@ export const q26 = async () => {
     const question = 'What is the Bike Number of Red Bike Owned By A1 House'
 
     const answer = await questionQueries.redBikeNumberOwnedByA1()
-    console.log(answer)
 
     return { no: 26, question, bikeNumber: answer }
 }
@@ -384,48 +383,8 @@ export const q39 = async () => {
 export const q40 = async () => {
     const question = 'Which Houses have no Car'
 
-    const listOfHouseNo = [
-        'A1',
-        'A2',
-        'A3',
-        'A4',
-        'A5',
-        'A6',
-        'A7',
-        'A8',
-        'A9',
-        'A10',
-        'B1',
-        'B2',
-        'B3',
-        'B4',
-        'B5',
-        'B6',
-        'B7',
-        'B8',
-        'B9',
-        'B10',
-        'C1',
-        'C2',
-        'C3',
-        'C4',
-        'C5',
-        'C6',
-        'C7',
-        'C8',
-        'C9',
-        'C10',
-        'D1',
-        'D2',
-        'D3',
-        'D4',
-        'D5',
-        'D6',
-        'D7',
-        'D8',
-        'D9',
-        'D10',
-    ]
+    const listOfHouseNo = await questionQueries.allHouseNo()
+    console.log(listOfHouseNo)
 
     const housesWithoutCar = await questionQueries.housesWithNoCar(
         listOfHouseNo
@@ -435,5 +394,54 @@ export const q40 = async () => {
         no: 40,
         question,
         housesWithoutCar: housesWithoutCar[0].housesWithoutCar,
+    }
+}
+
+export const q41 = async () => {
+    const question = 'List houses in Line 1'
+
+    const housesInLine1 = (await questionQueries.housesInLine(1))?.map(
+        (data) => data.houseNo
+    )
+    return {
+        no: 41,
+        question,
+        housesInLine1: housesInLine1,
+    }
+}
+export const q42 = async () => {
+    const question = 'List houses in Line 2'
+
+    const housesInLine1 = (await questionQueries.housesInLine(2))?.map(
+        (data) => data.houseNo
+    )
+    return {
+        no: 43,
+        question,
+        housesInLine1: housesInLine1,
+    }
+}
+export const q43 = async () => {
+    const question = 'List houses in Line 3'
+
+    const housesInLine1 = (await questionQueries.housesInLine(3))?.map(
+        (data) => data.houseNo
+    )
+    return {
+        no: 43,
+        question,
+        housesInLine1: housesInLine1,
+    }
+}
+export const q44 = async () => {
+    const question = 'List houses in Line 4'
+
+    const housesInLine1 = (await questionQueries.housesInLine(4))?.map(
+        (data) => data.houseNo
+    )
+    return {
+        no: 44,
+        question,
+        housesInLine1: housesInLine1,
     }
 }

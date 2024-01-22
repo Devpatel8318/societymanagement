@@ -399,3 +399,14 @@ export const housesWithNoCar = async (listOfAllHouseNo) => {
         ])
         .toArray()
 }
+
+export const allHouseNo = async () => {
+    return await db.collection('houseMaster').distinct('houseNo')
+}
+
+export const housesInLine = async (lineNo) => {
+    return await db
+        .collection('houseMaster')
+        .find({ lineNo }, { projection: { _id: 0, houseNo: 1 } })
+        .toArray()
+}
