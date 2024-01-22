@@ -5,7 +5,13 @@ import generateRandomHouseData from '../middleware/generateRandomHouseData.js'
 
 import { doesHouseNoAlreadyExists } from '../validators/houseValidators.js'
 
-import { createHouse, getAllHouses } from '../controllers/houseController.js'
+import {
+    createHouse,
+    getAllHouses,
+    getNumberOfBikes,
+    getNumberOfCars,
+    getSingleHouse,
+} from '../controllers/houseController.js'
 
 const router = new Router({ prefix: '/house' })
 
@@ -17,5 +23,11 @@ router.post(
 )
 
 router.get('/list', getAllHouses)
+
+router.get('/view/:houseNo', getSingleHouse)
+
+router.get('/cars/:houseNo', getNumberOfCars)
+
+router.get('/bikes/:houseNo', getNumberOfBikes)
 
 export default router

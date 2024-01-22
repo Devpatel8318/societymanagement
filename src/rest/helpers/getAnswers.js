@@ -384,7 +384,6 @@ export const q40 = async () => {
     const question = 'Which Houses have no Car'
 
     const listOfHouseNo = await questionQueries.allHouseNo()
-    console.log(listOfHouseNo)
 
     const housesWithoutCar = await questionQueries.housesWithNoCar(
         listOfHouseNo
@@ -406,7 +405,7 @@ export const q41 = async () => {
     return {
         no: 41,
         question,
-        housesInLine1: housesInLine1,
+        houses: housesInLine1,
     }
 }
 export const q42 = async () => {
@@ -416,9 +415,9 @@ export const q42 = async () => {
         (data) => data.houseNo
     )
     return {
-        no: 43,
+        no: 42,
         question,
-        housesInLine1: housesInLine1,
+        houses: housesInLine1,
     }
 }
 export const q43 = async () => {
@@ -430,7 +429,7 @@ export const q43 = async () => {
     return {
         no: 43,
         question,
-        housesInLine1: housesInLine1,
+        houses: housesInLine1,
     }
 }
 export const q44 = async () => {
@@ -442,6 +441,6 @@ export const q44 = async () => {
     return {
         no: 44,
         question,
-        housesInLine1: housesInLine1,
+        houses: housesInLine1,
     }
 }

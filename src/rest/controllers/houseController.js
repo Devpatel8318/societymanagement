@@ -25,3 +25,31 @@ export const getAllHouses = async (ctx) => {
 
     ctx.body = successObject('', houseData)
 }
+
+export const getSingleHouse = async (ctx) => {
+    const { houseNo } = ctx.request.params
+
+    const houseData = await houseQueries.getSingleHouse(houseNo)
+
+    ctx.body = successObject('', houseData)
+}
+
+export const getNumberOfCars = async (ctx) => {
+    const { houseNo } = ctx.request.params
+
+    const cars = await houseQueries.numberOfCars(houseNo)
+
+    console.log(cars)
+
+    ctx.body = successObject('', cars)
+}
+
+export const getNumberOfBikes = async (ctx) => {
+    const { houseNo } = ctx.request.params
+
+    const bikes = await houseQueries.numberOfBikes(houseNo)
+
+    console.log(bikes)
+
+    ctx.body = successObject('', bikes)
+}

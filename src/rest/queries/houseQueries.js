@@ -27,3 +27,81 @@ export const getAllHouses = async (
         .limit(limit)
         .toArray()
 }
+
+export const getSingleHouse = async (houseNo) => {
+    return await db
+        .collection(tableName)
+        .findOne({ houseNo }, { projection: { _id: 0 } })
+}
+
+export const numberOfCars = async (houseNo) => {
+    return await db
+        .collection('carMaster')
+        .aggregate([
+            {
+                $lookup: {
+                    from: 'houseMaster',
+                    localField: 'carOwner',
+                    foreignField: 'houseNo',
+                    as: 'ownerHouse',
+                },
+            },
+            {
+                $match: {
+                    'ownerHouse.houseNo': houseNo,
+                },
+            },
+            {
+                $count: 'numberOfCars',
+            },
+        ])
+        .toArray()
+}
+
+export const numberOfBikes = async (houseNo) => {
+    return await db
+        .collection('bikeMaster')
+        .aggregate([
+            {
+                $lookup: {
+                    from: 'houseMaster',
+                    localField: 'bikeOwner',
+                    foreignField: 'houseNo',
+                    as: 'ownerHouse',
+                },
+            },
+            {
+                $match: {
+                    'ownerHouse.houseNo': houseNo,
+                },
+            },
+            {
+                $count: 'numberOfBikes',
+            },
+        ])
+        .toArray()
+}
+
+// export const numberOfBikesByCaste = async (caste) => {
+//     return await db
+//         .collection('bikeMaster')
+//         .aggregate([
+//             {
+//                 $lookup: {
+//                     from: 'houseMaster',
+//                     localField: 'bikeOwner',
+//                     foreignField: 'houseNo',
+//                     as: 'ownerHouse',
+//                 },
+//             },
+//             {
+//                 $match: {
+//                     'ownerHouse.caste': { $in: caste },
+//                 },
+//             },
+//             {
+//                 $count: 'numberOfBikes',
+//             },
+//         ])
+//         .toArray()
+// }
