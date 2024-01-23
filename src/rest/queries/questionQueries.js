@@ -275,40 +275,39 @@ export const numberOfPatelWhoseMarriageInHall = async () => {
         .toArray()
 }
 
-export const numberOfPeopleWhoseMarriageHappenedInHallFromHouseHavingWhiteCar =
-    async () => {
-        return await db
-            .collection(carTable)
-            .aggregate([
-                {
-                    $match: {
-                        carColor: 'White',
+export const numMarriagesHallFromHouseWhiteCar = async () => {
+    return await db
+        .collection(carTable)
+        .aggregate([
+            {
+                $match: {
+                    carColor: 'White',
+                },
+            },
+            {
+                $lookup: {
+                    from: houseTable,
+                    localField: 'carOwner',
+                    foreignField: 'houseNo',
+                    as: 'ownerDetail',
+                },
+            },
+            {
+                $unwind: {
+                    path: '$ownerDetail',
+                },
+            },
+            {
+                $group: {
+                    _id: null,
+                    numberOfPople: {
+                        $sum: '$ownerDetail.marriagesInHall',
                     },
                 },
-                {
-                    $lookup: {
-                        from: houseTable,
-                        localField: 'carOwner',
-                        foreignField: 'houseNo',
-                        as: 'ownerDetail',
-                    },
-                },
-                {
-                    $unwind: {
-                        path: '$ownerDetail',
-                    },
-                },
-                {
-                    $group: {
-                        _id: null,
-                        numberOfPople: {
-                            $sum: '$ownerDetail.marriagesInHall',
-                        },
-                    },
-                },
-            ])
-            .toArray()
-    }
+            },
+        ])
+        .toArray()
+}
 
 export const housesWithAtleastOneCar = async () => {
     return await db

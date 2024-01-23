@@ -345,7 +345,7 @@ export const q37 = async () => {
         'How many Marriages happened in Hall from House which Own White Car?'
 
     const numberOfPople =
-        await questionQueries.numberOfPeopleWhoseMarriageHappenedInHallFromHouseHavingWhiteCar()
+        await questionQueries.numMarriagesHallFromHouseWhiteCar()
 
     return {
         no: 37,
