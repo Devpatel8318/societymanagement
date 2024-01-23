@@ -186,9 +186,7 @@ export const q20 = async () => {
     const question = 'How Many Bikes are Owned by Muslim?'
 
     const answer = await questionQueries.numberOfBikesByCaste(['Muslim'])
-    console.log('====================================')
-    console.log({ answer })
-    console.log('====================================')
+
     return { no: 20, question, numberOfBikes: answer[0]?.numberOfBikes }
 }
 
@@ -314,8 +312,6 @@ export const q34 = async () => {
 
     return { no: 34, question, numberOfBikes: numberOfBikes[0]?.numberOfBikes }
 }
-
-//new
 
 export const q35 = async () => {
     const question = 'How many Marriages happened in Society-Hall?'
@@ -486,12 +482,9 @@ export const q47 = async () => {
     return {
         no: 47,
         question,
-        numberOfHouses: muslimHouseLineNumbers[0].lineNo.length || 0,
-        lineNumbers: muslimHouseLineNumbers[0].lineNo,
+        lineNumbers: muslimHouseLineNumbers[0]?.lineNo,
     }
 }
-
-// house number contaning D, return number of people living
 
 export const q48 = async () => {
     const question =

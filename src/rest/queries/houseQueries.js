@@ -1,13 +1,15 @@
 import db from '../../connection/db.js'
 
-const tableName = 'houseMaster'
+const houseTable = 'houseMaster'
+const carTable = 'carMaster'
+const bikeTable = 'bikeMaster'
 
 export const createOneHouse = async (body) => {
-    return await db.collection(tableName).insertOne(body)
+    return await db.collection(houseTable).insertOne(body)
 }
 
 export const getOneHouse = async (query) => {
-    return await db.collection(tableName).findOne(query)
+    return await db.collection(houseTable).findOne(query)
 }
 
 export const getAllHouses = async (
@@ -20,7 +22,7 @@ export const getAllHouses = async (
     const limit = perPage || 0
 
     return await db
-        .collection(tableName)
+        .collection(houseTable)
         .find(filter, { projection: { _id: 0 } })
         .sort(sortOptions)
         .skip(skip)
@@ -30,13 +32,13 @@ export const getAllHouses = async (
 
 export const getSingleHouse = async (houseNo) => {
     return await db
-        .collection(tableName)
+        .collection(houseTable)
         .findOne({ houseNo }, { projection: { _id: 0 } })
 }
 
-export const numberOfCars = async (houseNo) => {
+export const numberOfCarsOfHouse = async (houseNo) => {
     return await db
-        .collection('carMaster')
+        .collection(carTable)
         .aggregate([
             {
                 $lookup: {
@@ -58,9 +60,9 @@ export const numberOfCars = async (houseNo) => {
         .toArray()
 }
 
-export const numberOfBikes = async (houseNo) => {
+export const numberOfBikesOfHouse = async (houseNo) => {
     return await db
-        .collection('bikeMaster')
+        .collection(bikeTable)
         .aggregate([
             {
                 $lookup: {
@@ -81,27 +83,3 @@ export const numberOfBikes = async (houseNo) => {
         ])
         .toArray()
 }
-
-// export const numberOfBikesByCaste = async (caste) => {
-//     return await db
-//         .collection('bikeMaster')
-//         .aggregate([
-//             {
-//                 $lookup: {
-//                     from: 'houseMaster',
-//                     localField: 'bikeOwner',
-//                     foreignField: 'houseNo',
-//                     as: 'ownerHouse',
-//                 },
-//             },
-//             {
-//                 $match: {
-//                     'ownerHouse.caste': { $in: caste },
-//                 },
-//             },
-//             {
-//                 $count: 'numberOfBikes',
-//             },
-//         ])
-//         .toArray()
-// }

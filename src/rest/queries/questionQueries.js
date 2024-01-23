@@ -1,8 +1,12 @@
 import db from '../../connection/db.js'
 
+const houseTable = 'houseMaster'
+const bikeTable = 'bikeMaster'
+const carTable = 'carMaster'
+
 export const numberOfMales = async () => {
     return await db
-        .collection('houseMaster')
+        .collection(houseTable)
         .aggregate([
             {
                 $group: {
@@ -17,7 +21,7 @@ export const numberOfMales = async () => {
 }
 export const numberOfFemales = async () => {
     return await db
-        .collection('houseMaster')
+        .collection(houseTable)
         .aggregate([
             {
                 $group: {
@@ -33,20 +37,20 @@ export const numberOfFemales = async () => {
 }
 
 export const numberOfHouses = async (filter = {}) => {
-    return await db.collection('houseMaster').find(filter).count()
+    return await db.collection(houseTable).countDocuments(filter)
 }
 
 export const numberOfBikes = async () => {
-    return await db.collection('bikeMaster').count()
+    return await db.collection(bikeTable).countDocuments({})
 }
 
 export const numberOfBikesByCaste = async (caste) => {
     return await db
-        .collection('bikeMaster')
+        .collection(bikeTable)
         .aggregate([
             {
                 $lookup: {
-                    from: 'houseMaster',
+                    from: houseTable,
                     localField: 'bikeOwner',
                     foreignField: 'houseNo',
                     as: 'ownerHouse',
@@ -66,7 +70,7 @@ export const numberOfBikesByCaste = async (caste) => {
 
 export const redBikeNumberOwnedByA1 = async (caste) => {
     return await db
-        .collection('bikeMaster')
+        .collection(bikeTable)
         .aggregate([
             {
                 $match: {
@@ -86,11 +90,11 @@ export const redBikeNumberOwnedByA1 = async (caste) => {
 
 export const numberOfCarsOfBharwad = async () => {
     return await db
-        .collection('carMaster')
+        .collection(carTable)
         .aggregate([
             {
                 $lookup: {
-                    from: 'houseMaster',
+                    from: houseTable,
                     localField: 'carOwner',
                     foreignField: 'houseNo',
                     as: 'ownerHouse',
@@ -109,12 +113,12 @@ export const numberOfCarsOfBharwad = async () => {
 }
 
 export const numberOfCars = async (filter = {}) => {
-    return await db.collection('carMaster').find(filter).count()
+    return await db.collection(carTable).countDocuments(filter)
 }
 
 export const numberOfHousesOwningRedBike = async () => {
     return await db
-        .collection('bikeMaster')
+        .collection(bikeTable)
         .aggregate([
             {
                 $match: {
@@ -135,11 +139,11 @@ export const numberOfHousesOwningRedBike = async () => {
 
 export const allCarsOfPatel = async () => {
     return await db
-        .collection('carMaster')
+        .collection(carTable)
         .aggregate([
             {
                 $lookup: {
-                    from: 'houseMaster',
+                    from: houseTable,
                     localField: 'carOwner',
                     foreignField: 'houseNo',
                     as: 'ownerHouse',
@@ -162,11 +166,11 @@ export const allCarsOfPatel = async () => {
 
 export const allBikesOfMuslim = async () => {
     return await db
-        .collection('bikeMaster')
+        .collection(bikeTable)
         .aggregate([
             {
                 $lookup: {
-                    from: 'houseMaster',
+                    from: houseTable,
                     localField: 'bikeOwner',
                     foreignField: 'houseNo',
                     as: 'ownerHouse',
@@ -189,11 +193,11 @@ export const allBikesOfMuslim = async () => {
 
 export const numberOfBikesOwnedByBHK = async (bhk) => {
     return await db
-        .collection('bikeMaster')
+        .collection(bikeTable)
         .aggregate([
             {
                 $lookup: {
-                    from: 'houseMaster',
+                    from: houseTable,
                     localField: 'bikeOwner',
                     foreignField: 'houseNo',
                     as: 'ownerHouse',
@@ -212,11 +216,11 @@ export const numberOfBikesOwnedByBHK = async (bhk) => {
 }
 export const numberOfCarsOwnedByBHK = async (bhk) => {
     return await db
-        .collection('carMaster')
+        .collection(carTable)
         .aggregate([
             {
                 $lookup: {
-                    from: 'houseMaster',
+                    from: houseTable,
                     localField: 'carOwner',
                     foreignField: 'houseNo',
                     as: 'ownerHouse',
@@ -236,7 +240,7 @@ export const numberOfCarsOwnedByBHK = async (bhk) => {
 
 export const numberOfMarriagesInHall = async () => {
     return await db
-        .collection('houseMaster')
+        .collection(houseTable)
         .aggregate([
             {
                 $group: {
@@ -252,7 +256,7 @@ export const numberOfMarriagesInHall = async () => {
 
 export const numberOfPatelWhoseMarriageInHall = async () => {
     return await db
-        .collection('houseMaster')
+        .collection(houseTable)
         .aggregate([
             {
                 $match: {
@@ -274,7 +278,7 @@ export const numberOfPatelWhoseMarriageInHall = async () => {
 export const numberOfPeopleWhoseMarriageHappenedInHallFromHouseHavingWhiteCar =
     async () => {
         return await db
-            .collection('carMaster')
+            .collection(carTable)
             .aggregate([
                 {
                     $match: {
@@ -283,7 +287,7 @@ export const numberOfPeopleWhoseMarriageHappenedInHallFromHouseHavingWhiteCar =
                 },
                 {
                     $lookup: {
-                        from: 'houseMaster',
+                        from: houseTable,
                         localField: 'carOwner',
                         foreignField: 'houseNo',
                         as: 'ownerDetail',
@@ -308,11 +312,11 @@ export const numberOfPeopleWhoseMarriageHappenedInHallFromHouseHavingWhiteCar =
 
 export const housesWithAtleastOneCar = async () => {
     return await db
-        .collection('carMaster')
+        .collection(carTable)
         .aggregate([
             {
                 $lookup: {
-                    from: 'houseMaster',
+                    from: houseTable,
                     foreignField: 'houseNo',
                     localField: 'carOwner',
                     as: 'ownerDetail',
@@ -337,11 +341,11 @@ export const housesWithAtleastOneCar = async () => {
 
 export const housesWithAtleastOneBike = async () => {
     return await db
-        .collection('bikeMaster')
+        .collection(bikeTable)
         .aggregate([
             {
                 $lookup: {
-                    from: 'houseMaster',
+                    from: houseTable,
                     foreignField: 'houseNo',
                     localField: 'bikeOwner',
                     as: 'ownerDetail',
@@ -366,11 +370,11 @@ export const housesWithAtleastOneBike = async () => {
 
 export const housesWithNoCar = async (listOfAllHouseNo) => {
     return await db
-        .collection('carMaster')
+        .collection(carTable)
         .aggregate([
             {
                 $lookup: {
-                    from: 'houseMaster',
+                    from: houseTable,
                     foreignField: 'houseNo',
                     localField: 'carOwner',
                     as: 'ownerDetail',
@@ -401,33 +405,30 @@ export const housesWithNoCar = async (listOfAllHouseNo) => {
 }
 
 export const allHouseNo = async () => {
-    return await db.collection('houseMaster').distinct('houseNo')
+    return await db.collection(houseTable).distinct('houseNo')
 }
 
 export const housesInLine = async (lineNo) => {
     return await db
-        .collection('houseMaster')
+        .collection(houseTable)
         .find({ lineNo }, { projection: { _id: 0, houseNo: 1 } })
         .toArray()
 }
 
 export const hallMarriedHouses = async () => {
     return await db
-        .collection('houseMaster')
+        .collection(houseTable)
         .find({ marriagesInHall: { $gt: 0 } })
         .toArray()
 }
 
 export const greenCars = async () => {
-    return await db
-        .collection('carMaster')
-        .find({ carColor: 'Green' })
-        .toArray()
+    return await db.collection(carTable).find({ carColor: 'Green' }).toArray()
 }
 
 export const lineNumbersMuslimHouses = async () => {
     return await db
-        .collection('houseMaster')
+        .collection(houseTable)
         .aggregate([
             {
                 $match: {
@@ -453,7 +454,7 @@ export const lineNumbersMuslimHouses = async () => {
 
 export const peopleInHousesWithDInName = async () => {
     return await db
-        .collection('houseMaster')
+        .collection(houseTable)
         .aggregate([
             {
                 $match: {

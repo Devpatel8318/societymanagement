@@ -37,7 +37,7 @@ export const getSingleHouse = async (ctx) => {
 export const getNumberOfCars = async (ctx) => {
     const { houseNo } = ctx.request.params
 
-    const cars = await houseQueries.numberOfCars(houseNo)
+    const cars = await houseQueries.numberOfCarsOfHouse(houseNo)
 
     console.log(cars)
 
@@ -47,7 +47,7 @@ export const getNumberOfCars = async (ctx) => {
 export const getNumberOfBikes = async (ctx) => {
     const { houseNo } = ctx.request.params
 
-    const bikes = await houseQueries.numberOfBikes(houseNo)
+    const bikes = await houseQueries.numberOfBikesOfHouse(houseNo)
 
     console.log(bikes)
 
