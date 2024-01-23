@@ -410,3 +410,73 @@ export const housesInLine = async (lineNo) => {
         .find({ lineNo }, { projection: { _id: 0, houseNo: 1 } })
         .toArray()
 }
+
+export const hallMarriedHouses = async () => {
+    return await db
+        .collection('houseMaster')
+        .find({ marriagesInHall: { $gt: 0 } })
+        .toArray()
+}
+
+export const greenCars = async () => {
+    return await db
+        .collection('carMaster')
+        .find({ carColor: 'Green' })
+        .toArray()
+}
+
+export const lineNumbersMuslimHouses = async () => {
+    return await db
+        .collection('houseMaster')
+        .aggregate([
+            {
+                $match: {
+                    caste: 'Muslim',
+                },
+            },
+            {
+                $group: {
+                    _id: '$caste',
+                    lineNo: {
+                        $addToSet: '$lineNo',
+                    },
+                },
+            },
+            {
+                $project: {
+                    _id: 0,
+                },
+            },
+        ])
+        .toArray()
+}
+
+export const peopleInHousesWithDInName = async () => {
+    return await db
+        .collection('houseMaster')
+        .aggregate([
+            {
+                $match: {
+                    houseNo: {
+                        $regex: 'D',
+                    },
+                },
+            },
+            {
+                $project: {
+                    subTotal: {
+                        $add: ['$numberOfMales', '$numberOfFemales'],
+                    },
+                },
+            },
+            {
+                $group: {
+                    _id: null,
+                    total: {
+                        $sum: '$subTotal',
+                    },
+                },
+            },
+        ])
+        .toArray()
+}

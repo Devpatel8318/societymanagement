@@ -1,25 +1,25 @@
-// const total2 =
-//     line_items.reduce(
-//         (acc, { amount, discount_amount }) => acc + amount - discount_amount,
-//         0
-//     ) + (discounts?.[0]?.amount || 0)
+const total2 =
+    line_items.reduce(
+        (acc, { amount, discount_amount }) => acc + amount - discount_amount,
+        0
+    ) + (discounts?.[0]?.amount || 0)
 
-// import axios from 'axios'
+// // import axios from 'axios'
 
-// const carOwner = '9'
-// const amount = 1
+// // const carOwner = '9'
+// // const amount = 1
 
-// for (let index = 0; index < 4; index++) {
-//     const prefixes = ['A', 'B', 'C', 'D']
+// // for (let index = 0; index < 4; index++) {
+// //     const prefixes = ['A', 'B', 'C', 'D']
 
-//     const data = prefixes[index] + carOwner
+// //     const data = prefixes[index] + carOwner
 
-//     for (let index = 0; index < amount; index++) {
-//         await axios.post('http://localhost:8000/car/add', {
-//             carOwner: data,
-//         })
-//     }
-// }
+// //     for (let index = 0; index < amount; index++) {
+// //         await axios.post('http://localhost:8000/car/add', {
+// //             carOwner: data,
+// //         })
+// //     }
+// // }
 
 const data = {
     estimate: {
@@ -154,5 +154,4 @@ const total = line_items.reduce(
 )
 const sub_total = total + (discounts?.[0]?.amount || 0)
 
-console.log('total:', total)
 console.log('sub_total:', sub_total)

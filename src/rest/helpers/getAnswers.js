@@ -17,7 +17,7 @@ export const q2 = async () => {
 }
 
 export const q3 = async () => {
-    const question = 'How many Houses are there in Society'
+    const question = 'How many Houses are there in Society?'
 
     const answer = await questionQueries.numberOfHouses()
 
@@ -25,7 +25,7 @@ export const q3 = async () => {
 }
 
 export const q4 = async () => {
-    const question = 'How many Houses of Muslim are there in Society'
+    const question = 'How many Houses of Muslim are there in Society?'
 
     const answer = await questionQueries.numberOfHouses({ caste: 'Muslim' })
 
@@ -33,7 +33,7 @@ export const q4 = async () => {
 }
 
 export const q5 = async () => {
-    const question = 'How many Houses of Jain are there in Society'
+    const question = 'How many Houses of Jain are there in Society?'
 
     const answer = await questionQueries.numberOfHouses({ caste: 'Jain' })
 
@@ -41,7 +41,7 @@ export const q5 = async () => {
 }
 
 export const q6 = async () => {
-    const question = 'How many Houses of Patel are there in Society'
+    const question = 'How many Houses of Patel are there in Society?'
 
     const answer = await questionQueries.numberOfHouses({ caste: 'Patel' })
 
@@ -49,7 +49,7 @@ export const q6 = async () => {
 }
 
 export const q7 = async () => {
-    const question = 'How many Houses of Rabari are there in Society'
+    const question = 'How many Houses of Rabari are there in Society?'
 
     const answer = await questionQueries.numberOfHouses({ caste: 'Rabari' })
 
@@ -57,7 +57,7 @@ export const q7 = async () => {
 }
 
 export const q8 = async () => {
-    const question = 'How many Houses of Bharwad are there in Society'
+    const question = 'How many Houses of Bharwad are there in Society?'
 
     const answer = await questionQueries.numberOfHouses({ caste: 'Bharwad' })
 
@@ -65,7 +65,7 @@ export const q8 = async () => {
 }
 
 export const q9 = async () => {
-    const question = 'How many Houses of Muslim are there in Line 1'
+    const question = 'How many Houses of Muslim are there in Line 1?'
 
     const answer = await questionQueries.numberOfHouses({
         caste: 'Muslim',
@@ -76,7 +76,7 @@ export const q9 = async () => {
 }
 
 export const q10 = async () => {
-    const question = 'How many Houses of Jain are there in Line 1'
+    const question = 'How many Houses of Jain are there in Line 1?'
 
     const answer = await questionQueries.numberOfHouses({
         caste: 'Jain',
@@ -87,7 +87,7 @@ export const q10 = async () => {
 }
 
 export const q11 = async () => {
-    const question = 'How many Houses of Patel are there in Line 1'
+    const question = 'How many Houses of Patel are there in Line 1?'
 
     const answer = await questionQueries.numberOfHouses({
         caste: 'Patel',
@@ -98,7 +98,7 @@ export const q11 = async () => {
 }
 
 export const q12 = async () => {
-    const question = 'How many Houses of Rabari are there in Line 1'
+    const question = 'How many Houses of Rabari are there in Line 1?'
 
     const answer = await questionQueries.numberOfHouses({
         caste: 'Rabari',
@@ -109,7 +109,7 @@ export const q12 = async () => {
 }
 
 export const q13 = async () => {
-    const question = 'How many Houses of Bharwad are there in Line 1'
+    const question = 'How many Houses of Bharwad are there in Line 1?'
 
     const answer = await questionQueries.numberOfHouses({
         caste: 'Bharwad',
@@ -120,7 +120,7 @@ export const q13 = async () => {
 }
 
 export const q14 = async () => {
-    const question = 'How many Houses of Muslim are there in Line 2'
+    const question = 'How many Houses of Muslim are there in Line 2?'
 
     const answer = await questionQueries.numberOfHouses({
         caste: 'Muslim',
@@ -131,7 +131,7 @@ export const q14 = async () => {
 }
 
 export const q15 = async () => {
-    const question = 'How many Houses of Jain are there in Line 2'
+    const question = 'How many Houses of Jain are there in Line 2?'
 
     const answer = await questionQueries.numberOfHouses({
         caste: 'Jain',
@@ -142,7 +142,7 @@ export const q15 = async () => {
 }
 
 export const q16 = async () => {
-    const question = 'How many Houses of Patel are there in Line 2'
+    const question = 'How many Houses of Patel are there in Line 2?'
 
     const answer = await questionQueries.numberOfHouses({
         caste: 'Patel',
@@ -153,7 +153,7 @@ export const q16 = async () => {
 }
 
 export const q17 = async () => {
-    const question = 'How many Houses of Rabari are there in Line 2'
+    const question = 'How many Houses of Rabari are there in Line 2?'
 
     const answer = await questionQueries.numberOfHouses({
         caste: 'Rabari',
@@ -164,7 +164,7 @@ export const q17 = async () => {
 }
 
 export const q18 = async () => {
-    const question = 'How many Houses of Bharwad are there in Line 2'
+    const question = 'How many Houses of Bharwad are there in Line 2?'
 
     const answer = await questionQueries.numberOfHouses({
         caste: 'Bharwad',
@@ -175,7 +175,7 @@ export const q18 = async () => {
 }
 
 export const q19 = async () => {
-    const question = 'How many Bikes are there in Society'
+    const question = 'How many Bikes are there in Society?'
 
     const answer = await questionQueries.numberOfBikes()
 
@@ -183,15 +183,17 @@ export const q19 = async () => {
 }
 
 export const q20 = async () => {
-    const question = 'How Many Bikes are Owned by Muslim'
+    const question = 'How Many Bikes are Owned by Muslim?'
 
     const answer = await questionQueries.numberOfBikesByCaste(['Muslim'])
-
+    console.log('====================================')
+    console.log({ answer })
+    console.log('====================================')
     return { no: 20, question, numberOfBikes: answer[0]?.numberOfBikes }
 }
 
 export const q21 = async () => {
-    const question = 'How Many Bikes are Owned by Jain'
+    const question = 'How Many Bikes are Owned by Jain?'
 
     const answer = await questionQueries.numberOfBikesByCaste(['Jain'])
 
@@ -199,7 +201,7 @@ export const q21 = async () => {
 }
 
 export const q22 = async () => {
-    const question = 'How Many Bikes are Owned by Patel'
+    const question = 'How Many Bikes are Owned by Patel?'
 
     const answer = await questionQueries.numberOfBikesByCaste(['Patel'])
 
@@ -207,7 +209,7 @@ export const q22 = async () => {
 }
 
 export const q23 = async () => {
-    const question = 'How Many Bikes are Owned by Bharwad'
+    const question = 'How Many Bikes are Owned by Bharwad?'
 
     const answer = await questionQueries.numberOfBikesByCaste(['Bharwad'])
 
@@ -215,7 +217,7 @@ export const q23 = async () => {
 }
 
 export const q24 = async () => {
-    const question = 'How Many Bikes are Owned by Rabari'
+    const question = 'How Many Bikes are Owned by Rabari?'
 
     const answer = await questionQueries.numberOfBikesByCaste(['Rabari'])
 
@@ -224,7 +226,7 @@ export const q24 = async () => {
 
 export const q25 = async () => {
     const question =
-        'How Many Bikes are Owned by Muslim, Bharwad and  Rabari Collectively'
+        'How Many Bikes are Owned by Muslim, Bharwad and  Rabari Collectively?'
 
     const answer = await questionQueries.numberOfBikesByCaste([
         'Muslim',
@@ -244,7 +246,7 @@ export const q26 = async () => {
 }
 
 export const q27 = async () => {
-    const question = 'How many Cars are owned By Bharwad'
+    const question = 'How many Cars are owned By Bharwad?'
 
     const answer = await questionQueries.numberOfCarsOfBharwad()
 
@@ -252,7 +254,7 @@ export const q27 = async () => {
 }
 
 export const q28 = async () => {
-    const question = 'How many Cars are there in Society'
+    const question = 'How many Cars are there in Society?'
 
     const answer = await questionQueries.numberOfCars()
 
@@ -260,7 +262,7 @@ export const q28 = async () => {
 }
 
 export const q29 = async () => {
-    const question = 'How many White Cars are there'
+    const question = 'How many White Cars are there?'
 
     const answer = await questionQueries.numberOfCars({ carColor: 'White' })
 
@@ -268,7 +270,7 @@ export const q29 = async () => {
 }
 
 export const q30 = async () => {
-    const question = 'How many Houses are there which owns Red bike'
+    const question = 'How many Houses are there which owns Red bike?'
 
     const answer = await questionQueries.numberOfHousesOwningRedBike()
 
@@ -292,7 +294,7 @@ export const q32 = async () => {
 }
 
 export const q33 = async () => {
-    const question = 'How many total Vehicles are there in 3BHK'
+    const question = 'How many total Vehicles are there in 3BHK?'
 
     const numberOfBikes = await questionQueries.numberOfBikesOwnedByBHK(3)
     const numberOfCars = await questionQueries.numberOfCarsOwnedByBHK(3)
@@ -306,7 +308,7 @@ export const q33 = async () => {
 }
 
 export const q34 = async () => {
-    const question = 'How many total Bikes are there in 1BHK Houses'
+    const question = 'How many total Bikes are there in 1BHK Houses?'
 
     const numberOfBikes = await questionQueries.numberOfBikesOwnedByBHK(1)
 
@@ -316,7 +318,7 @@ export const q34 = async () => {
 //new
 
 export const q35 = async () => {
-    const question = 'How many Marriages happened in Society-Hall'
+    const question = 'How many Marriages happened in Society-Hall?'
 
     const numberOfMarriagesInHall =
         await questionQueries.numberOfMarriagesInHall()
@@ -330,7 +332,7 @@ export const q35 = async () => {
 }
 
 export const q36 = async () => {
-    const question = 'How many Marriages of Patel happened in Society-Hall'
+    const question = 'How many Marriages of Patel happened in Society-Hall?'
 
     const numberOfPeople =
         await questionQueries.numberOfPatelWhoseMarriageInHall()
@@ -344,7 +346,7 @@ export const q36 = async () => {
 
 export const q37 = async () => {
     const question =
-        'How many Marriages happened in Hall from House which Own White Car'
+        'How many Marriages happened in Hall from House which Own White Car?'
 
     const numberOfPople =
         await questionQueries.numberOfPeopleWhoseMarriageHappenedInHallFromHouseHavingWhiteCar()
@@ -408,6 +410,7 @@ export const q41 = async () => {
         houses: housesInLine1,
     }
 }
+
 export const q42 = async () => {
     const question = 'List houses in Line 2'
 
@@ -420,6 +423,7 @@ export const q42 = async () => {
         houses: housesInLine1,
     }
 }
+
 export const q43 = async () => {
     const question = 'List houses in Line 3'
 
@@ -432,6 +436,7 @@ export const q43 = async () => {
         houses: housesInLine1,
     }
 }
+
 export const q44 = async () => {
     const question = 'List houses in Line 4'
 
@@ -442,5 +447,62 @@ export const q44 = async () => {
         no: 44,
         question,
         houses: housesInLine1,
+    }
+}
+
+export const q45 = async () => {
+    const question = 'Houses having atleast one member married in Hall'
+
+    const hallMarriedHouses = await questionQueries.hallMarriedHouses()
+    console.log(hallMarriedHouses)
+
+    return {
+        no: 45,
+        question,
+        numberOfHouses: hallMarriedHouses.length || 0,
+        houses: hallMarriedHouses,
+    }
+}
+
+export const q46 = async () => {
+    const question = 'Cars having Green Color'
+
+    const greenCars = await questionQueries.greenCars()
+
+    return {
+        no: 46,
+        question,
+        numberOfHouses: greenCars.length || 0,
+        houses: greenCars,
+    }
+}
+
+export const q47 = async () => {
+    const question = 'Line Numbers Which have Muslim Houses'
+
+    const muslimHouseLineNumbers =
+        await questionQueries.lineNumbersMuslimHouses()
+
+    return {
+        no: 47,
+        question,
+        numberOfHouses: muslimHouseLineNumbers[0].lineNo.length || 0,
+        lineNumbers: muslimHouseLineNumbers[0].lineNo,
+    }
+}
+
+// house number contaning D, return number of people living
+
+export const q48 = async () => {
+    const question =
+        'Number of People living in Houses having house name containing D'
+
+    const peopleInHousesWithDInName =
+        await questionQueries.peopleInHousesWithDInName()
+
+    return {
+        no: 48,
+        question,
+        numberOfPeople: peopleInHousesWithDInName[0].total,
     }
 }

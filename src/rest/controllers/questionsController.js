@@ -19,7 +19,7 @@ export const provideAnswer = async (ctx) => {
 }
 
 export const provideAllAnswers = async (ctx) => {
-    const questions = Array.from({ length: 44 }, (_, index) =>
+    const questions = Array.from({ length: 48 }, (_, index) =>
         allQuestionAnswers[`q${index + 1}`]()
     )
 
